@@ -12,6 +12,10 @@ func (c Config) Name() string {
 	return c["name"].(string)
 }
 
+func (c Config) FreshRating() bool {
+	return c["fresh_rating"].(bool)
+}
+
 func LoadConfig(path string) (Config, error) {
 	var m map[string]interface{}
 	data, err := ioutil.ReadFile(path)
@@ -33,5 +37,6 @@ func main() {
 
 	fmt.Println(config)
 	fmt.Println(config.Name())
+	fmt.Println(config.FreshRating())
 
 }
