@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/russross/blackfriday"
-	"io/ioutil"
+	"github.com/soolaimon/essential-go/pub/pages"
 	"log"
 	"os"
 )
@@ -14,13 +13,11 @@ func main() {
 	}
 	filename := os.Args[1]
 	fmt.Println(filename)
-
-	data, err := ioutil.ReadFile(filename)
+	p, err := pages.NewPage(filename)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println(string(data))
 
-	data = blackfriday.MarkdownCommon(data)
-	fmt.Println(string(data))
+	fmt.Println(p)
+
 }
